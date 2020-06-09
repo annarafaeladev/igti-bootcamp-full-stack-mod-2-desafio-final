@@ -58,10 +58,18 @@ router.put("/grade/edit", async (req, res) => {
     let fileJson = await readFileJson();
     let index = fileJson.grades.findIndex((grade) => grade.id === id);
     if (index) {
-      (fileJson.grades[index].student = student),
-        (fileJson.grades[index].subject = subject),
-        (fileJson.grades[index].type = type),
-        (fileJson.grades[index].value = value),
+      (fileJson.grades[index].student = student
+        ? student
+        : fileJson.grades[index].student),
+        (fileJson.grades[index].subject = subject
+          ? subject
+          : fileJson.grades[index].subject),
+        (fileJson.grades[index].type = type
+          ? type
+          : fileJson.grades[index].type),
+        (fileJson.grades[index].value = value
+          ? value
+          : fileJson.grades[index].value),
         await fs.writeFile(pathJson, JSON.stringify(fileJson));
       res.json({
         ok: true,
@@ -96,7 +104,7 @@ router.delete("/grade/delete/:id", async (req, res) => {
 router.get("/grade/:id", async (req, res) => {
   let id = req.params.id;
   try {
-    let fileJson = await readFileJson();
+    let fileJson = await fs.readFile(pathJson, "utf8");
     fileJson = JSON.parse(fileJson);
     let data = fileJson.grades.filter((grade) => grade.id === parseInt(id, 10));
 
@@ -108,11 +116,11 @@ router.get("/grade/:id", async (req, res) => {
       });
     }
 
-    return res.json({
-      ok: false,
-      message: "Not Found id",
-      grade: null,
-    });
+    // return res.json({
+    //   ok: false,
+    //   message: "Not Found id",
+    //   grade: null,
+    // });
   } catch (error) {
     return res.json({
       ok: false,
