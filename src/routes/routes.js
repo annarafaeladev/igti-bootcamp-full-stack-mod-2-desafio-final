@@ -114,13 +114,13 @@ router.get("/grade/:id", async (req, res) => {
         message: "Success",
         grade: data,
       });
+    } else {
+      res.json({
+        ok: false,
+        message: "Not Found id",
+        grade: null,
+      });
     }
-
-    // return res.json({
-    //   ok: false,
-    //   message: "Not Found id",
-    //   grade: null,
-    // });
   } catch (error) {
     return res.json({
       ok: false,
