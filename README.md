@@ -1,14 +1,14 @@
-# manipulacao-arquivo-json-api-part2
+# grades-control-api
 
-Objetivos
+# Objetivos
 
 Exercitar os conceitos trabalhados no módulo para criação de uma API, criando endpoints utilizando #Node.js e #Express.
 
-Enunciado
+# Enunciado
 
 Desenvolver uma API chamada “grades-control-api” para controlar notas de alunos em matérias de um curso.
 
-Atividades
+# Atividades
 
 O desafio final consiste em desenvolver uma API chamada “grades-control-api” para controlar notas de alunos em matérias de um curso.  Você deverá desenvolver endpoints para criação, atualização, exclusão e consulta de notas, aqui chamadas de grades. As grades deverão ser salvas em um arquivo json, chamado “grades.json”. Esse arquivo será previamente fornecido e seus endpoints devem atuar considerando os registros já existentes.
 
@@ -53,7 +53,7 @@ Crie um endpoint para retornar as três melhores grades de acordo com determinad
 
 Os alunos deverão desenvolver a prática e, depois, responder às seguintes questões objetivas.
 
-IMPORTANTE: responda as questões na ordem, e com o arquivo JSON do jeito que foi fornecido, sem efetuar alterações prévias, de forma a evitar dados inconsistentes.
+# IMPORTANTE: responda as questões na ordem, e com o arquivo JSON do jeito que foi fornecido, sem efetuar alterações prévias, de forma a evitar dados inconsistentes.
 
 
 ![Captura de tela de 2020-06-09 02-53-12](https://user-images.githubusercontent.com/53823948/84111048-7059af80-a9fc-11ea-9547-b9de89f64094.png)
