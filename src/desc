@@ -1,0 +1,19 @@
+
+{
+    nextID: number,
+    grade: {
+    id: number
+    types: string { 
+        Desafio, 
+        Trabalho Prático, 
+        Fórum
+    }
+
+    subject: string{
+        01 - JavaScript
+        02 - Node
+        03 - React
+        04 - MongoDB
+    }
+    value: number
+}}
