@@ -1,5 +1,12 @@
 # grades-control-api
 
+# Para instalar o projeto :
+
+- git clone https://github.com/Anna18921/grades-control-api.git
+- npm init
+- npm install
+- nodemon --experimental-modules src/index.js
+
 # Objetivos
 
 Exercitar os conceitos trabalhados no módulo para criação de uma API, criando endpoints utilizando #Node.js e #Express.
@@ -10,7 +17,7 @@ Desenvolver uma API chamada “grades-control-api” para controlar notas de alu
 
 # Atividades
 
-O desafio final consiste em desenvolver uma API chamada “grades-control-api” para controlar notas de alunos em matérias de um curso.  Você deverá desenvolver endpoints para criação, atualização, exclusão e consulta de notas, aqui chamadas de grades. As grades deverão ser salvas em um arquivo json, chamado “grades.json”. Esse arquivo será previamente fornecido e seus endpoints devem atuar considerando os registros já existentes.
+O desafio final consiste em desenvolver uma API chamada “grades-control-api” para controlar notas de alunos em matérias de um curso. Você deverá desenvolver endpoints para criação, atualização, exclusão e consulta de notas, aqui chamadas de grades. As grades deverão ser salvas em um arquivo json, chamado “grades.json”. Esse arquivo será previamente fornecido e seus endpoints devem atuar considerando os registros já existentes.
 
 Uma grade deve possuir os campos abaixo:
 
@@ -29,7 +36,6 @@ Uma grade deve possuir os campos abaixo:
 O arquivo grades.json será previamente fornecido com alguns registros inseridos, seus endpoints devem trabalhar considerando a existência deles, não devendo criar um arquivo limpo para utilização. A estrutura do arquivo é a seguinte:
 
 ![EDes](https://user-images.githubusercontent.com/53823948/84111147-adbe3d00-a9fc-11ea-8dbe-1932404e9c1f.png)
-
 
 A propriedade nextId deve armazenar sempre o próximo id que será utilizado na criação de uma nova grade. A propriedade grades possui um array com várias grades, cada uma sendo representada por um objeto com os campos descritos anteriormente.
 
@@ -54,6 +60,5 @@ Crie um endpoint para retornar as três melhores grades de acordo com determinad
 Os alunos deverão desenvolver a prática e, depois, responder às seguintes questões objetivas.
 
 # IMPORTANTE: responda as questões na ordem, e com o arquivo JSON do jeito que foi fornecido, sem efetuar alterações prévias, de forma a evitar dados inconsistentes.
-
 
 ![Captura de tela de 2020-06-09 02-53-12](https://user-images.githubusercontent.com/53823948/84111048-7059af80-a9fc-11ea-9547-b9de89f64094.png)
