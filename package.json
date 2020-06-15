@@ -14,5 +14,6 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "nodemon": "^2.0.4"
-  }
+  },
+  "type": "module"
 }
