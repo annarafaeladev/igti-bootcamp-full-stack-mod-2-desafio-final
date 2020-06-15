@@ -1,13 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const fs = require("fs").promises;
-const path = require("path");
+import express from 'express';
+import { promises } from 'fs';
+import path from 'path';
 
-const pathJson = path.resolve(__dirname, "../", "grades.json");
+const router = express.Router();
+const pathJson = path.join(path.resolve(), 'src/grades.json');
 
 async function readFileJson() {
   try {
-    let fileJson = await fs.readFile(pathJson, "utf8");
+    let fileJson = await promises.readFile(pathJson, 'utf8');
     fileJson = JSON.parse(fileJson);
     return fileJson;
   } catch (err) {
@@ -15,7 +15,7 @@ async function readFileJson() {
   }
 }
 
-router.get("/grade/index", async (_, res) => {
+router.get('/grade/index', async (_, res) => {
   try {
     let fileJson = await readFileJson();
     return res.json({ ok: true, result: fileJson });
@@ -24,7 +24,7 @@ router.get("/grade/index", async (_, res) => {
   }
 });
 
-router.post("/grade/create", async (req, res) => {
+router.post('/grade/create', async (req, res) => {
   const { student, subject, type, value } = req.body;
   try {
     let fileJson = await readFileJson();
@@ -37,22 +37,22 @@ router.post("/grade/create", async (req, res) => {
       timestamp: new Date(),
     };
     fileJson.grades.push(data);
-    fs.writeFile(pathJson, JSON.stringify(fileJson));
+    promises.writeFile(pathJson, JSON.stringify(fileJson));
     res.json({
       ok: true,
-      message: "Success",
+      message: 'Success',
       grade: data,
     });
   } catch (error) {
     return res.json({
       ok: false,
-      message: "Failed create grade",
+      message: 'Failed create grade',
       grade: null,
     });
   }
 });
 
-router.put("/grade/edit", async (req, res) => {
+router.put('/grade/edit', async (req, res) => {
   const { student, subject, type, value, id } = req.body;
   try {
     let fileJson = await readFileJson();
@@ -70,18 +70,18 @@ router.put("/grade/edit", async (req, res) => {
         (fileJson.grades[index].value = value
           ? value
           : fileJson.grades[index].value),
-        await fs.writeFile(pathJson, JSON.stringify(fileJson));
+        await promises.writeFile(pathJson, JSON.stringify(fileJson));
       res.json({
         ok: true,
-        message: "Edited Success",
+        message: 'Edited Success',
       });
     }
   } catch (error) {
-    return res.json({ ok: false, message: "Failed", grade: null });
+    return res.json({ ok: false, message: 'Failed', grade: null });
   }
 });
 
-router.delete("/grade/delete/:id", async (req, res) => {
+router.delete('/grade/delete/:id', async (req, res) => {
   try {
     let fileJson = await readFileJson();
 
@@ -90,47 +90,47 @@ router.delete("/grade/delete/:id", async (req, res) => {
     );
 
     fileJson.grades = data;
-    await fs.writeFile(pathJson, JSON.stringify(fileJson));
+    await promises.writeFile(pathJson, JSON.stringify(fileJson));
 
     res.json({
       ok: true,
-      message: "Removed Success",
+      message: 'Removed Success',
     });
   } catch (error) {
-    return res.json({ ok: false, message: "id not foud" });
+    return res.json({ ok: false, message: 'id not foud' });
   }
 });
 
-router.get("/grade/:id", async (req, res) => {
+router.get('/grade/:id', async (req, res) => {
   let id = req.params.id;
   try {
-    let fileJson = await fs.readFile(pathJson, "utf8");
+    let fileJson = await promises.readFile(pathJson, 'utf8');
     fileJson = JSON.parse(fileJson);
     let data = fileJson.grades.filter((grade) => grade.id === parseInt(id, 10));
 
     if (data.length > 0) {
       res.json({
         ok: true,
-        message: "Success",
+        message: 'Success',
         grade: data,
       });
     } else {
       res.json({
         ok: false,
-        message: "Not Found id",
+        message: 'Not Found id',
         grade: null,
       });
     }
   } catch (error) {
     return res.json({
       ok: false,
-      message: "Not Found id",
+      message: 'Not Found id',
       grade: null,
     });
   }
 });
 
-router.get("/soma", async (req, res) => {
+router.get('/soma', async (req, res) => {
   const { student, subject } = req.query;
   try {
     let fileJson = await readFileJson();
@@ -158,7 +158,7 @@ router.get("/soma", async (req, res) => {
   }
 });
 
-router.get("/media", async (req, res) => {
+router.get('/media', async (req, res) => {
   const { type, subject } = req.query;
   try {
     let fileJson = await readFileJson();
@@ -185,7 +185,7 @@ router.get("/media", async (req, res) => {
   }
 });
 
-router.get("/melhor-grade", async (req, res) => {
+router.get('/melhor-grade', async (req, res) => {
   const { type, subject } = req.query;
   try {
     let fileJson = await readFileJson();
@@ -215,4 +215,4 @@ router.get("/melhor-grade", async (req, res) => {
     });
   }
 });
-module.exports = router;
+export default router;
